@@ -18,7 +18,7 @@
     <% @invoices.each do |invoice| %>
       <tr>
         <td><%= invoice.date %></td>
-        <td><%= invoice.company %></td>
+        <td><%= invoice.company.name %></td>
         <td><%= invoice.tax %></td>
         <td><%= invoice.employee.name %></td>
         <td><%= invoice.status_type %></td>
