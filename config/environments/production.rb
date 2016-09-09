@@ -90,6 +90,6 @@ Rails.application.configure do
     domain: ENV['MANDRILL_DOMAIN'],
     user_name: ENV['MANDRILL_USERNAME'],
     password: ENV['MANDRILL_PASSWORD'],
-    authentication: ENV['MANDRILL_AUTHENTICATION']
+    authentication: :plain
   }
 end
