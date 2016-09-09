@@ -36,7 +36,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
-    # add_index :users, :confirmation_token,   unique: true
+    add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
+
+  def down
+    remove_columns :users, :confirmation_token, :confirmed_at, :confirmation_sent_at
+    # remove_columns :users, :unconfirmed_email # Only if using reconfirmable
+  end
+  
 end
