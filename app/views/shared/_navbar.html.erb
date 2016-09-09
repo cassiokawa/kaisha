@@ -19,6 +19,12 @@
 			</ul>
       
       <ul class="nav navbar-nav navbar-right">
+          <% if (!user_signed_in?) %>
+            <li><%= link_to "Entrar" , new_user_session_path %></li>
+            <li><%= link_to "Registrar" , new_user_registration_path %></li>
+          <% else %>
+            <li><%= link_to "Logout" , new_user_session_path %></li>
+          <% end %> 
         
         <li><%= link_to "About Us", welcome_about_path %></li>
 				<li><%= link_to "Features", welcome_features_path %></li>
