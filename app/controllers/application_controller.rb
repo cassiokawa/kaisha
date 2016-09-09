@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+  puts "SENDGRID USER: #{ENV['MANDRILL_USERNAME']}"
+  puts "SENDGRID PASS: #{ENV['MANDRILL_PASSWORD']}"
+
   protected
 
   def configure_permitted_parameters
