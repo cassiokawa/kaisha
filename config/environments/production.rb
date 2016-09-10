@@ -77,19 +77,31 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'https://kaisha.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'https://kaisha.heroku.com' }
 
   config.action_mailer.perform_deliveries = true
   
   config.action_mailer.delivery_method = :smtp
  
   config.action_mailer.smtp_settings = {
-    address: ENV['MANDRILL_ADDRESS'],
-    port: ENV['MANDRILL_PORT'],
+    address: ENV['SENDGRID_ADDRESS'],
+    port: ENV['SENDGRID_PORT'],
     enable_starttls_auto: true,
-    domain: ENV['MANDRILL_DOMAIN'],
-    user_name: ENV['MANDRILL_USERNAME'],
-    password: ENV['MANDRILL_PASSWORD'],
+    domain: ENV['SENDGRID_DOMAIN'],
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
     authentication: :plain
   }
+
+
+ActionMailer::Base.smtp_settings = {
+  :address        => ENV['SENDGRID_ADDRESS'],
+  :port           => ENV['SENDGRID_PORT'],
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => ENV['SENDGRID_DOMAIN'],
+  :enable_starttls_auto => true
+}
+
 end
